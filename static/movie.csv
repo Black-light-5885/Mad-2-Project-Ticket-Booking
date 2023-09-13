@@ -1,0 +1,10 @@
+Booking ID,Movie_Name,User,Theatre Name,Show,Time,No_Bookings,Total,Status
+1,Flash 2022,user1,EA Cinemas,Screen 1,11 AM - 12.45 PM,1,120,Active
+3,Agent,user1,GVM,Screen 1,05 PM - 07.45 PM,10,1500,Active
+4,Agent,user1,GVM,Screen 1,05 PM - 07.45 PM,-1,-150,Canceled
+6,Sita Raman,user1,GVM,Screen 1,01 PM - 03.45 AM,5,600,Active
+7,Sita Raman,user1,IMax,Show 2,11 AM - 12.45 PM,3,360,Active
+8,Flash 2022,user1,IMax,Show 3,01 PM - 03.45 AM,2,200,Active
+9,Fast X,user1,IMax,Show 1,11 AM - 12.45 PM,1,120,Active
+10,Flash 2022,user1,IMax,Show 3,01 PM - 03.45 AM,1,100,Active
+11,Flash 2022,user2,IMax,Show 3,01 PM - 03.45 AM,1,100,Canceled

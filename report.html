@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 style="color: #5e9ca0; text-align: center">
+      <span style="background-color: #333399; color: #ffffff"
+        >Book For you</span
+      >
+    </h1>
+    <h1 style="color: #5e9ca0; text-align: center">Monthly Report</h1>
+    <h2 style="color: #2e6c80">
+      <span style="color: #000000">Hi {{data.user_name}}</span>
+    </h2>
+    <p>
+      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This is for your {{data.month}}
+      monthly report.&nbsp;
+    </p>
+    <h2 style="color: #2e6c80">Basic Info:</h2>
+    <p><strong>&nbsp; &nbsp; &nbsp;User Name :</strong> {{data.user_name }}</p>
+    <p><strong>&nbsp; &nbsp; &nbsp;Email :</strong> {{data.email}}</p>
+    <p>
+      <strong>&nbsp; &nbsp; &nbsp;Total Number of Bookings:</strong>
+      {{data.book_count}}
+    </p>
+    <p>&nbsp;</p>
+    <h2 style="color: #2e6c80; text-align: center">Booking Details</h2>
+    <table
+      style="border-collapse: collapse; width: 95.1038%; height: 150px"
+      border="1"
+    >
+      <tbody>
+        <tr style="height: 76px">
+          <td style="width: 8.4006%; height: 76px; text-align: center">
+            <strong>Booking ID</strong>
+          </td>
+          <td style="width: 13.757%; height: 76px; text-align: center">
+            <strong>Movie Name</strong>
+          </td>
+          <td style="width: 11.9377%; height: 76px; text-align: center">
+            <strong>Theatre Name</strong>
+          </td>
+          <td style="width: 16.8814%; height: 76px; text-align: center">
+            <strong>Date</strong>
+          </td>
+          <td style="width: 10.7937%; height: 76px; text-align: center">
+            <strong>Show Time</strong>
+          </td>
+          <td style="width: 14.7413%; height: 76px; text-align: center">
+            <strong>Number of booking</strong>
+          </td>
+          <td style="width: 11.6329%; height: 76px; text-align: center">
+            <strong>Price</strong>
+          </td>
+          <td style="width: 12.3955%; height: 76px; text-align: center">
+            <strong>Total</strong>
+          </td>
+        </tr>
+        {% for b in data.bookings %}
+        <tr style="height: 71px">
+          <td style="width: 8.4006%; height: 71px; text-align: center">
+            {{b.id}}
+          </td>
+          <td style="width: 13.757%; height: 71px; text-align: center">
+            {{b.movie_name}}
+          </td>
+          <td style="width: 11.9377%; height: 71px; text-align: center">
+            {{b.theater}}
+          </td>
+          <td style="width: 16.8814%; height: 71px; text-align: center">
+            {{b.date}}
+          </td>
+          <td style="width: 10.7937%; height: 71px; text-align: center">
+            {{b.time}}
+          </td>
+          <td style="width: 14.7413%; height: 71px; text-align: center">
+            {{b.count}}
+          </td>
+          <td style="width: 11.6329%; height: 71px; text-align: center">
+            {{b.price}}
+          </td>
+          <td style="width: 12.3955%; height: 71px; text-align: center">
+            {{b.total}}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <p style="text-align: center">&nbsp;</p>
+    <p style="text-align: center"><strong>Enjoy Your Day!</strong></p>
+    <p style="text-align: center">
+      <strong>Thanks for Using BookForYou app.</strong>
+    </p>
+    <p><strong>&nbsp;</strong></p>
+  </body>
+</html>

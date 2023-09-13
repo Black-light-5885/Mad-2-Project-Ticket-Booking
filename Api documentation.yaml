@@ -1,0 +1,846 @@
+openapi: 3.0.3
+info:
+  title: Book For You
+  description: |-
+
+  version: 1.0.11
+servers:
+  - url: http://127.0.0.1:5000
+tags:
+  - name: User
+    description: Everything about Users
+  - name: Movies
+    description: Access to all the Movies
+  - name: Venue
+    description: Access to all the Venue
+  - name: Show
+    description: Access to all the Shows
+  - name: Booking
+    description: Access to all the Bookings
+paths:
+  /api/user/{user_name}:
+    get:
+      tags:
+        - User
+      description: Getting information about user
+      parameters:
+          - in: path
+            name: user_name
+            required: true
+            schema:
+              type: string
+              example: bala_123
+              
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: number
+                      example : 1
+                    first_name:
+                      type: string
+                      example : Bala
+                    last_name:
+                      type: string
+                      example : Murugan
+                    gender:
+                      type: string
+                      example : Male
+                    user_name:
+                      type: string
+                      example : bala_123
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : User Not found!
+        '500':
+          description : Internal Server Error!
+          
+
+    put:
+      tags:
+        - User
+      description: Update the user 
+      parameters:
+        - in: path
+          name: user_name
+          required: true
+          schema:
+            type: string
+            example: ali
+            
+      requestBody:
+        description: Update an existent pet in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties :
+                first_name:
+                  type: string
+                  example: BalaM
+                last_name:
+                  type: string
+                  example: murugan
+                
+              
+          
+      responses:
+        '200':
+          description: Updated Successfully.
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: number
+                      example : 1
+                    first_name:
+                      type: string
+                      example : BalaM
+                    last_name:
+                      type: string
+                      example : murugan
+                    gender:
+                      type: string
+                      example : Male
+                    user_name:
+                      type: string
+                      example : bala_123
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : User Not found!
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!
+    delete:
+      tags:
+        - User
+      description: Delete a user
+      parameters:
+          - in: path
+            name: user_name
+            required: true
+            schema:
+              type: string
+              example: bala_123
+              
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request!
+        '404':
+          description : User Not found!
+        '500':
+          description : Internal Server Error!
+
+  /api/user:
+    description: End point to Add new user
+    post:
+      description: Add new user to the Database
+      tags:
+        - User
+        
+      requestBody:
+        description: Add new user to the Database
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example : bala
+
+                last_name:
+                  type: string
+                  example : M
+                user_name:
+                  type: string
+                  example: bala_456
+
+                gender:
+                  type: string
+                  example: Male/Female
+
+                password:
+                  type: string
+                  example: password
+               
+      responses:
+        '201':
+          description: Added Successfully.
+        '400':
+          description: Bad request!
+
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!  
+           
+        
+
+  /api/moive/{id}:
+    get:
+      tags:
+        - Movies
+      summary: Find movie by ID
+      description: Getting information about Movie
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    movie_id:
+                      type: number
+                      example : 1
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : Movies Title
+                    Content:
+                      type: string
+                      example : Movies content
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Movies Not found!
+        '500':
+          description : Internal Server Error!
+          
+
+    put:
+      tags:
+        - Movies
+      summary: Update the Movie content
+      description: Update the Movie
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+            
+      requestBody:
+        description: Update an existent Movies in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                
+              
+          
+      responses:
+        '200':
+          description: Updated Successfully.
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Posts Not found!
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!
+    delete:
+      tags:
+        - Movies
+      summary: Delete the Movie
+      description: Delete a Movie
+      
+      parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: integer
+              example: 1
+              
+      responses:
+        '200':
+          description: Successfully Deleted
+        '400':
+          description: Bad request!
+        '404':
+          description : Movies Not found!
+        '500':
+          description : Internal Server Error!
+
+  /api/movie:
+    
+    post:
+      description: Add new Movies to the Database
+      tags:
+        - Movies
+      summary: End point to Add new Movie
+      requestBody:
+        description: Add new Movies to the Database
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                      type: integer
+                      example: 1
+                Title:
+                  type: string
+                  example : Post title here
+
+                Content:
+                  type: string
+                  example : Add your post content here
+               
+      responses:
+        '201':
+          description: Added Successfully.
+        '400':
+          description: Bad request!
+
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!  
+
+  /api/venue/{id}:
+    get:
+      tags:
+        - Venue
+      summary: Find venue by ID
+      description: Getting information about Venue
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    Venue_id:
+                      type: number
+                      example : 1
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : venue Title
+                    Content:
+                      type: string
+                      example : venue content
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Venue Not found!
+        '500':
+          description : Internal Server Error!
+          
+
+    put:
+      tags:
+        - Venue
+      summary: Update the Venue content
+      description: Update the Venue
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+            
+      requestBody:
+        description: Update an existent Venue in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                
+              
+          
+      responses:
+        '200':
+          description: Updated Successfully.
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Venue Not found!
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!
+    delete:
+      tags:
+        - Venue
+      summary: Delete the Venue
+      description: Delete a Venue
+      
+      parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: integer
+              example: 1
+              
+      responses:
+        '200':
+          description: Successfully Deleted
+        '400':
+          description: Bad request!
+        '404':
+          description : Venue Not found!
+        '500':
+          description : Internal Server Error!
+
+  /api/venue:
+    
+    post:
+      description: Add new Venue to the Database
+      tags:
+        - Venue
+      summary: End point to Add new Venue
+      requestBody:
+        description: Add new Venue to the Database
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                      type: integer
+                      example: 1
+                Title:
+                  type: string
+                  example : Venue title here
+
+                Content:
+                  type: string
+                  example : Add your Venue content here
+               
+      responses:
+        '201':
+          description: Added Successfully.
+        '400':
+          description: Bad request!
+
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!  
+
+  /api/show/{id}:
+    get:
+      tags:
+        - Show
+      summary: Find Show by ID
+      description: Getting information about Show
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    Show_id:
+                      type: number
+                      example : 1
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : Show Title
+                    Content:
+                      type: string
+                      example : Show content
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Show Not found!
+        '500':
+          description : Internal Server Error!
+          
+
+    put:
+      tags:
+        - Show
+      summary: Update the Show content
+      description: Update the Show
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+            
+      requestBody:
+        description: Update an existent Show in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                
+              
+          
+      responses:
+        '200':
+          description: Updated Successfully.
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Show Not found!
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!
+    delete:
+      tags:
+        - Show
+      summary: Delete the Show
+      description: Delete a Show
+      
+      parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: integer
+              example: 1
+              
+      responses:
+        '200':
+          description: Successfully Deleted
+        '400':
+          description: Bad request!
+        '404':
+          description : Show Not found!
+        '500':
+          description : Internal Server Error!
+
+  /api/show:
+    
+    post:
+      description: Add new Show to the Database
+      tags:
+        - Show
+      summary: End point to Add new Show
+      requestBody:
+        description: Add new Show to the Database
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                      type: integer
+                      example: 1
+                Title:
+                  type: string
+                  example : Show title here
+
+                Content:
+                  type: string
+                  example : Add your Show content here
+               
+      responses:
+        '201':
+          description: Added Successfully.
+        '400':
+          description: Bad request!
+
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!  
+
+  /api/booking/{id}:
+    get:
+      tags:
+        - Booking
+      summary: Find Booking by ID
+      description: Getting information about Booking
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+        
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    Show_id:
+                      type: number
+                      example : 1
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : Booking Title
+                    Content:
+                      type: string
+                      example : Booking content
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Booking Not found!
+        '500':
+          description : Internal Server Error!
+          
+
+    put:
+      tags:
+        - Booking
+      summary: Update the Booking content
+      description: Update the Booking
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            example: 1
+            
+      requestBody:
+        description: Update an existent Booking in the store
+        content:
+          application/json:
+            schema:
+              type: object
+              properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                
+              
+          
+      responses:
+        '200':
+          description: Updated Successfully.
+          content:
+            application/json:
+              schema:
+                  title: user_object
+                  type : object
+                  properties :
+                    user_id:
+                      type: integer
+                      example: 1
+                    Title:
+                      type: string
+                      example : New title here
+                    Content:
+                      type: string
+                      example : New content here
+                    
+        '400':
+          description: Bad request!
+        '404':
+          description : Booking Not found!
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!
+    delete:
+      tags:
+        - Booking
+      summary: Delete the Booking
+      description: Delete a Booking
+      
+      parameters:
+          - in: path
+            name: id
+            required: true
+            schema:
+              type: integer
+              example: 1
+              
+      responses:
+        '200':
+          description: Successfully Deleted
+        '400':
+          description: Bad request!
+        '404':
+          description : Booking Not found!
+        '500':
+          description : Internal Server Error!
+
+  /api/booking:
+    
+    post:
+      description: Add new Booking to the Database
+      tags:
+        - Booking
+      summary: End point to Add new Booking
+      requestBody:
+        description: Add new Booking to the Database
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                      type: integer
+                      example: 1
+                Title:
+                  type: string
+                  example : Booking title here
+
+                Content:
+                  type: string
+                  example : Add your Booking content here
+               
+      responses:
+        '201':
+          description: Added Successfully.
+        '400':
+          description: Bad request!
+
+        '405':
+          description: Invalid input!
+        '500':
+          description : Internal Server Error!  
