@@ -20,6 +20,6 @@ CACHE_REDIS_PORT = 6379
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
 MAIL_USERNAME = 'bookforyou483@gmail.com'
-MAIL_PASSWORD = 'kyyifrkwmzcqqmud'
+MAIL_PASSWORD = 'xyx'
 MAIL_USE_TLS = False
 MAIL_USE_SSL = True
